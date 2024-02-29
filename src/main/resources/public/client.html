@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spark Web Calculator</title>
+  <script>
+    async function callService(service, params) {
+        const response = await fetch(service + '/' + params);
+        const data = await response.json();
+        document.getElementById(service).innerHTML = data;
+    }
+  </script>
+</head>
+<body>
+<h1>Spark Web Calculator</h1>
+<form onsubmit="callService('sin', this.elements['value'].value); return false;">
+  Calcular seno: <input type="text" name="value" required>
+  <button type="submit">Calcular</button>
+  <div id="sin"></div>
+</form>
+
+<form onsubmit="callService('cos', this.elements['value'].value); return false;">
+  Calcular coseno: <input type="text" name="value" required>
+  <button type="submit">Calcular</button>
+  <div id="cos"></div>
+</form>
+
+<form onsubmit="callService('isPalindromo', this.elements['word'].value); return false;">
+  Verificar palíndromo: <input type="text" name="word" required>
+  <button type="submit">Verificar</button>
+  <div id="isPalindromo"></div>
+</form>
+
+<form onsubmit="callService('magvector', this.elements['x'].value + '/' + this.elements['y'].value); return false;">
+  Magnitud vector ( x, y ):
+  <input type="text" name="x" required>
+  <input type="text" name="y" required>
+  <button type="submit">Calcular</button>
+  <div id="magvector"></div>
+</form>
+
+</body>
+</html>
